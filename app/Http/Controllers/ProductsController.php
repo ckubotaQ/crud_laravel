@@ -85,6 +85,12 @@ class ProductsController extends Controller
 
     {
     $datosProductos=request()->except(['_token','_method']);
+    if($request->hasFile('PhotoGraphy')){
+        $product= Products::findOrFail($id);
+         Storage::delete('public/'.$product->PhotoGraphy);
+        $datosProductos['PhotoGraphy']=$request->file('PhotoGraphy')->store('uploads','public');
+    }
+    
     Products::where('id','=',$id)->update($datosProductos);
     $product= Products::findOrFail($id);
     return view('products.edit',compact('product'));

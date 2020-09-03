@@ -17,7 +17,8 @@ inicio (Despliegue de los datos))
 @foreach($products as $Product)
 <tr>
     <td>{{$loop->iteration}}</td>
-    <td>{{$Product->PhotoGraphy}}</td>
+    <td>
+    <img src="{{asset('storage').'/'.$Product->PhotoGraphy}}" alt="" width="200" height="200"></td>
     <td>{{$Product->NameProduct}}</td>
     <td>  <a href="{{url('/productos/'.$Product->id.'/edit')}}">
 Editar</a> | 
