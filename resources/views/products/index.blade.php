@@ -19,7 +19,8 @@ inicio (Despliegue de los datos))
     <td>{{$loop->iteration}}</td>
     <td>{{$Product->PhotoGraphy}}</td>
     <td>{{$Product->NameProduct}}</td>
-    <td>Editar | 
+    <td>  <a href="{{url('/productos/'.$Product->id.'/edit')}}">
+Editar</a> | 
 
    <form method="post" action="{{url('/productos/'.$Product->id)}}">
       {{csrf_field()}} 
