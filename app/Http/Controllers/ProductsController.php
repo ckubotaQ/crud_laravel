@@ -75,9 +75,13 @@ class ProductsController extends Controller
      * @param  \App\Products  $products
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Products $products)
+    public function update(Request $request, $id)
+
     {
-        //
+    $datosProductos=request()->except(['_token','_method']);
+    Products::where('id','=',$id)->update($datosProductos);
+    $product= Products::findOrFail($id);
+    return view('products.edit',compact('product'));
     }
 
     /**
