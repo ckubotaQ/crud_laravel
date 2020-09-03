@@ -58,9 +58,14 @@ class ProductsController extends Controller
      * @param  \App\Products  $products
      * @return \Illuminate\Http\Response
      */
-    public function edit(Products $products)
+    public function edit($id)
     {
-        //
+        $product= Products::findOrFail($id);
+         return view('products.edit',compact('product')
+         );
+
+
+
     }
 
     /**
@@ -85,6 +90,6 @@ class ProductsController extends Controller
     {
        Products::destroy($id);
        return redirect('productos');
-       
+
     }
 }
