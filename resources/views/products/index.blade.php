@@ -19,7 +19,15 @@ inicio (Despliegue de los datos))
     <td>{{$loop->iteration}}</td>
     <td>{{$Product->PhotoGraphy}}</td>
     <td>{{$Product->NameProduct}}</td>
-    <td>Editar | Borrar</td>
+    <td>Editar | 
+
+   <form method="post" action="{{url('/productos/'.$Product->id)}}">
+      {{csrf_field()}} 
+      {{method_field('DELETE')}}
+      <button type="submit" onclick="return confirm('¿Borrar?');">Borrar</button>
+   </form>
+
+    </td>
 </tr>
 @endforeach
 </tbody>
