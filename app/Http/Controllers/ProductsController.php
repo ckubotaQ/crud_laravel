@@ -38,7 +38,13 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+    //$datosProducts=request()->all();
+    $datosProducts=request()->except('_token');
+    if($request->hasFile('PhotoGraphy')){
+        $datosProducts['PhotoGraphy']=$request->file('PhotoGraphy')->store('uploads','public');
+    }
+    Products::insert($datosProducts);
+    return response()->Json($datosProducts);
     }
 
     /**
