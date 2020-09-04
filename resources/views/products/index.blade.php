@@ -1,4 +1,8 @@
-inicio (Despliegue de los datos))
+@if(Session::has('Mensaje')){{
+    Session::get('Mensaje')
+
+}}
+@endif
 <table class="table table-dark">
 <thead class="thead-table-dark">
 <tr class="">
