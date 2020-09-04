@@ -16,7 +16,7 @@ class ProductsController extends Controller
     {
 
 
-        $datos['products']=Products::paginate(1);
+        $datos['products']=Products::paginate(4);
         return view('products.index',$datos);
     }
 
