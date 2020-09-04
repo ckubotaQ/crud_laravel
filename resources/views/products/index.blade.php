@@ -1,4 +1,9 @@
-inicio (Despliegue de los datos))
+@if(Session::has('Mensaje')){{
+    Session::get('Mensaje')
+
+}}
+@endif
+<a href="{{url('productos/create')}}">Agregar Producto</a>
 <table class="table table-dark">
 <thead class="thead-table-dark">
 <tr class="">

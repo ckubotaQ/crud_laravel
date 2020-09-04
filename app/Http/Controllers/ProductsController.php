@@ -44,7 +44,8 @@ class ProductsController extends Controller
         $datosProducts['PhotoGraphy']=$request->file('PhotoGraphy')->store('uploads','public');
     }
     Products::insert($datosProducts);
-    return response()->Json($datosProducts);
+    //return response()->Json($datosProducts);
+    return redirect('productos')->with('Mensaje','Producto Agregado Con Exito');
     }
 
     /**
@@ -93,7 +94,8 @@ class ProductsController extends Controller
     
     Products::where('id','=',$id)->update($datosProductos);
     $product= Products::findOrFail($id);
-    return view('products.edit',compact('product'));
+    //return view('products.edit',compact('product'));
+    return redirect('productos')->with('Mensaje','Producto Modificado Con Exito');
     }
 
     /**
@@ -112,7 +114,7 @@ class ProductsController extends Controller
 
 
       
-       return redirect('productos');
+        return redirect('productos')->with('Mensaje','Producto Eliminado Con Exito');
 
     }
 }
