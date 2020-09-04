@@ -12,6 +12,6 @@ section para editar productos
 <br/>
 <input type="file" name="PhotoGraphy" id="PhotoGraphy" value="">
 <br/>
-<input type="submit" value="Modificar">
-<a href="{{url('productos')}}">Regresar</a>
+<input type="submit" value="Editar">
+
 </form>

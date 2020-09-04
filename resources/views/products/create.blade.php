@@ -7,7 +7,7 @@ Section para crear productos
 <input type="file" name="PhotoGraphy" id="PhotoGraphy" value="">
 
 <input type="submit" value="Agregar">
-<a href="{{url('productos')}}">Regresar</a>
+
 
 
 
