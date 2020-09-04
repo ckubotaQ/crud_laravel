@@ -14,8 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 //Route::get('/productos', "ProductsController@index");
 //Route::get('/productos/create', "ProductsController@create");
-Route::resource('productos', 'ProductsController');
+Route::resource('productos', 'ProductsController')->middleware('auth');
+Auth::routes(['register'=>false,'reset'=>false]);
+
+Route::get('/home', 'HomeController@index')->name('home');

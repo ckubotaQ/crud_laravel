@@ -16,7 +16,7 @@ class ProductsController extends Controller
     {
 
 
-        $datos['products']=Products::paginate(5);
+        $datos['products']=Products::paginate(1);
         return view('products.index',$datos);
     }
 
@@ -38,6 +38,14 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
+       $campos=[
+       'NameProduct'=>'required|string|max:100',
+       'PhotoGraphy'=>'required|max:10000|mimes:jepg,png,jpg'
+       ];
+       $Mensaje=["required"=>'El :attribute es requerido'];
+       $this->validate($request,$campos,$Mensaje);
+
+
     //$datosProducts=request()->all();
     $datosProducts=request()->except('_token');
     if($request->hasFile('PhotoGraphy')){
@@ -84,6 +92,18 @@ class ProductsController extends Controller
     public function update(Request $request, $id)
 
     {
+        $campos=[
+            'NameProduct'=>'required|string|max:100'
+           
+            ];
+           
+            if($request->hasFile('PhotoGraphy')){
+                $campos+=[ 'PhotoGraphy'=>'required|max:10000|mimes:jepg,png,jpg'];
+            }
+            $Mensaje=["required"=>'El :attribute es requerido'];
+            $this->validate($request,$campos,$Mensaje);
+
+
     $datosProductos=request()->except(['_token','_method']);
     if($request->hasFile('PhotoGraphy')){
         $product= Products::findOrFail($id);
